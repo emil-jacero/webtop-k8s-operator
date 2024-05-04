@@ -11,13 +11,31 @@ It also controls the access to the sessions to the user owning the resource usin
 ## Scope
 
 Provide basic functionality of creating, updating and deleting resources. Also include persistent storage in some fashion, possibly PVC.
-The resources are [lsio webtop](https://docs.linuxserver.io/images/docker-webtop/) containers with KasmVNC on.
+The resources are [lsio webtop](https://docs.linuxserver.io/images/docker-webtop/) containers with [KasmVNC](https://github.com/kasmtech/KasmVNC) on.
+
+## Architecture
+
+### Gateway
+
+The gateway is a backend proxy service made up of Envoy Proxy and Open Policy Agent (OPA).
+The gateway can be responsible for multiple sessions for multiple users at the same time. It is also capable of securing the sessions to the owing user based on which namespace the resource was created in and which user owns that namespace.
+
+It utilizes OIDC for authentication and to provide groups and roles. It utilizes OPA for authorization.
+
+Envoy is integrated with OPA to authorize the user and also to control the session. Meaning the gateway is continuously checking the JWT of the user and is capable of cutting the connection if said user is not authorized anymore.
+
+### Webtop
+
+Webtop is the resource used by an end-user. It could be a complete desktop and also a
 
 ## Features
 
 - [ ] Create, update, delete webtop instances
 - [ ] Persistent user data
+- [ ] Proot-apps applications
 - [ ] Sleep/pause the pod with inactive use
+- [ ] Namespaced resources
+- [ ] Secure and private connections
 
 ## Getting Started
 
