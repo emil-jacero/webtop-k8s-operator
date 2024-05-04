@@ -24,9 +24,14 @@ It utilizes OIDC for authentication and to provide groups and roles. It utilizes
 
 Envoy is integrated with OPA to authorize the user and also to control the session. Meaning the gateway is continuously checking the JWT of the user and is capable of cutting the connection if said user is not authorized anymore.
 
-### Webtop
+### Desktop
 
-Webtop is the resource used by an end-user. It could be a complete desktop and also a
+This is a simple linux desktop created by linuxserver.io called webtop. It launches a KasmVNC server inside the container and exposes it on HTTP port 3000 and HTTPS port 3001.
+
+### Application
+
+This is a simple X11 or wayland application running inside a container. It launches a KasmVNC server inside the container and exposes it on HTTP port 3000 and HTTPS port 3001.
+An application could for example be firefox.
 
 ## Features
 

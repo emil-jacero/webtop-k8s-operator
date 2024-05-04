@@ -1,0 +1,12 @@
+apiVersion: webtop.jacero.se/v1alpha1
+kind: Desktop
+metadata:
+  labels:
+    app.kubernetes.io/name: desktop
+    app.kubernetes.io/instance: desktop-sample
+    app.kubernetes.io/part-of: webtop-k8s-operator
+    app.kubernetes.io/managed-by: kustomize
+    app.kubernetes.io/created-by: webtop-k8s-operator
+  name: desktop-sample
+spec:
+  # TODO(user): Add fields here

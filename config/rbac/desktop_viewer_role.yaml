@@ -1,0 +1,27 @@
+# permissions for end users to view desktops.
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  labels:
+    app.kubernetes.io/name: clusterrole
+    app.kubernetes.io/instance: desktop-viewer-role
+    app.kubernetes.io/component: rbac
+    app.kubernetes.io/created-by: webtop-k8s-operator
+    app.kubernetes.io/part-of: webtop-k8s-operator
+    app.kubernetes.io/managed-by: kustomize
+  name: desktop-viewer-role
+rules:
+- apiGroups:
+  - webtop.jacero.se
+  resources:
+  - desktops
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - webtop.jacero.se
+  resources:
+  - desktops/status
+  verbs:
+  - get
